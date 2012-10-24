@@ -1,0 +1,123 @@
+body 
+{
+	font-family: verdana;
+	padding: 10px;
+}
+#wrap 
+{
+	width: 940px;
+	margin: auto;
+	border: 5px black solid;
+	border-radius: 25px;
+	padding: 0;
+	overflow: auto;
+}
+.middlerow 
+{
+	position: absolute;
+	left: 640px;
+}
+.lastrow
+{
+	position: absolute;
+	left: 800px;
+}
+.box
+{
+	border: 1px black solid;
+	border-radius: 5px;
+	margin: 5px 0;
+	padding: 5px;
+	width: 500px;
+}
+.infobox
+{
+	border: 1px black solid;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 5px;
+	width: 500px;
+}
+.resultsbox
+{
+	border: 1px black solid;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 5px;
+	width: 500px;
+}
+.myquizbox
+{
+	position: relative;
+	border: 1px black solid;
+	border-radius: 5px;
+	margin: 5px;
+	margin-top: 10px;
+	margin-left: 0;
+	padding: 5px;
+	width: 210px;
+	float: right;
+	height: auto;
+}
+.tabort
+{
+	position: absolute;
+	right: 5px;
+}
+.andra
+{
+	position: absolute;
+	right: 70px;
+}
+p
+{
+	margin: 0;
+	padding: 0;
+}
+h1
+{
+	margin: 0;
+	font-size: 70px;
+}
+#header
+{
+	background-color: #aaa;
+	text-align: center;
+	height: 90px;
+	line-height: 90px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+#profcolumn
+{
+	float: left;
+	width: 160px;
+	height: auto;
+	padding: 10px;
+}
+#content
+{
+	float: left;
+	padding: 5px 0;
+	margin: 0;
+}
+#image
+{
+	border: 5px #333 solid;
+	padding: 0;
+	font-size: 50px;
+	color: #ccc;
+}
+h3
+{
+	margin-top: 3px;
+	margin-bottom: 5px;
+	margin-left: 0;
+	margin-right: 0;
+}
+a
+{
+	color: red;
+	text-decoration: none;
+}
+a
