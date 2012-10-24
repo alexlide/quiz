@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 24, 2012 at 02:04 PM
+-- Generation Time: Oct 24, 2012 at 08:04 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -33,16 +33,16 @@ CREATE TABLE IF NOT EXISTS `image` (
   `userID` int(11) NOT NULL,
   PRIMARY KEY (`imageID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `image`
 --
 
 INSERT INTO `image` (`imageID`, `imageSource`, `thumbSource`, `userID`) VALUES
-(14, 'images/Koala.jpg', 'images/thumb_Koala.jpg', 1),
-(15, 'images/Chrysanthemum.jpg', 'images/thumb_Chrysanthemum.jpg', 10),
-(17, 'images/Jellyfish.jpg', 'images/thumb_Jellyfish.jpg', 2);
+(18, 'images/Desert.jpg', 'images/thumb_Desert.jpg', 9),
+(19, 'images/Koala.jpg', 'images/thumb_Koala.jpg', 1),
+(20, 'images/Penguins.jpg', 'images/thumb_Penguins.jpg', 15);
 
 -- --------------------------------------------------------
 
@@ -170,19 +170,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   `userName` varchar(20) COLLATE utf8_swedish_ci NOT NULL,
   `password` char(128) COLLATE utf8_swedish_ci NOT NULL,
   `joined` date NOT NULL,
+  `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `userName`, `password`, `joined`) VALUES
-(1, 'pelle', 'polle', '2012-10-19'),
-(2, 'olle', 'dolle', '2012-10-20'),
-(3, 'tinke', 'dinke', '2012-10-22'),
-(9, 'pette', 'mette', '2012-10-22'),
-(10, 'melle', 'molle', '2012-10-23');
+INSERT INTO `user` (`userID`, `userName`, `password`, `joined`, `admin`) VALUES
+(1, 'pelle', '973ac87ce5bda621670536c654826a4f6f2a7524de1e9ffc0ec1f49a2aa5a20c73ecdcad547106263603f91eef65ceb4a4fb7413ef71e5ca7fa71478dbe4b608', '2012-10-19', 1),
+(2, 'olle', '2aebf0c916ee79d2b6641a820489663bffc6c8fd68270b5fee4994df2f5fdf75978a75420707eb06c52f081c5bea7de9c783d6459efa1688c17cdb078cd83ca4', '2012-10-20', 1),
+(3, 'tinke', 'bc188243cddae989e13cbc625f75e44701d4f47bf3bb8f3f876b448986866798aca952be7fa7d5466700445a2ff057614cbfe0ed2af24b5a9f4f9d374f568151', '2012-10-22', 1),
+(15, 'peppe', '40d42b79f032513019edef9c7a29320614ca58abdc05140d1dd88bf7a6cec7a113c4adf8fd66dc1cffc2f556d8c6c1ed11733ad7fe8e0d3a53b777a51b37ade2', '2012-10-24', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

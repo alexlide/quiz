@@ -209,7 +209,7 @@ body {font-family: verdana;}
 			$year = substr($currentStart, 4, 2);
 			$month = substr($currentStart, 2, 2);
 			$day = substr($currentStart, 0, 2);
-			$hour = substr($currentStart, 6, 2);
+			$hour = substr($currentStart, 6, 2)+2;
 			$min = substr($currentStart, 8, 2);
 			$sec = substr($currentStart, 10, 2);
 			echo "<span class='lastrow'>20".$year."-".$month."-".$day." ".$hour.":".$min.":".$sec."</span><br>";			

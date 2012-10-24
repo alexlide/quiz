@@ -107,7 +107,9 @@ if(isset($_SESSION['userID']))
 				$getAnswer = "SELECT * FROM results
 				INNER JOIN question
 				ON question.questionID = results.questionID
-				WHERE results.questionID = $questionID";
+				WHERE results.questionID = $questionID
+				AND start = $start
+				AND userID = $userID";
 				$res = mysqli_query($dbConn, $getAnswer);
 				if ($row = mysqli_fetch_assoc($res))
 				{
@@ -115,12 +117,13 @@ if(isset($_SESSION['userID']))
 						{$alt = $row['alt1'];}
 					elseif($_GET['alt'] == 'altX')
 						{$alt = $row['altX'];}
-					else {$alt = $row[alt2];}
+					else {$alt = $row['alt2'];}
 					echo "Du har svarat: ".$alt."<br>";
 				}
 				
 				if ($row['correct'] == $row['answer'])
 				{
+					$correct = $row['correct'];
 					echo "Du svarade rätt<br>";
 				}
 				else
@@ -181,6 +184,7 @@ if(isset($_SESSION['userID']))
 				elseif($procent > 0.4)
 					{echo "Ganska bra jobbat!<br>";}
 				else {echo "Dåligt jobbat!<br>";}
+				echo "Gå tillbaka till quizsidan<a href='main.php'>?</a><br>";
 			}
 
 		}
