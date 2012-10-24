@@ -111,19 +111,23 @@ $thumbHeight = floor ( ($orgHeight / $orgWidth) * 150 );
 if ($thumbWidth > $thumbHeight)
 {
 $thumb = imagecreatetruecolor($thumbWidth, 150);
+$startWidth = ($thumbWidth - 150)/2;
+$startHeight = 0;
 
 imagecopyresampled ($thumb, $image, 0, 0, 0, 0, $thumbWidth, 150, $orgWidth, $orgHeight);
 }
 else
 {
 $thumb = imagecreatetruecolor(150, $thumbHeight);
+$startHeight = ($thumbHeight - 150)/2;
+$startWidth = 0;
 
 imagecopyresampled ($thumb, $image, 0, 0, 0, 0, 150, $thumbHeight, $orgWidth, $orgHeight);
 }
 
 $cropThumb = imagecreatetruecolor(150, 150);
 
-imagecopyresampled ($cropThumb, $thumb, 0, 0, 0, 0, 150, 150, 150, 150);	
+imagecopyresampled ($cropThumb, $thumb, 0, 0, $startWidth, $startHeight, 150, 150, 150, 150);	
 
 
 $thumbname = "images/thumb_".$_FILES['bild']['name'];

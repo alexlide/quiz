@@ -15,12 +15,12 @@ body
 .middlerow 
 {
 	position: absolute;
-	left: 640px;
+	left: 170px;
 }
 .lastrow
 {
 	position: absolute;
-	left: 800px;
+	left: 330px;
 }
 .box
 {
@@ -45,6 +45,7 @@ body
 	margin: 5px;
 	padding: 5px;
 	width: 500px;
+	position: relative;
 }
 .myquizbox
 {

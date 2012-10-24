@@ -44,7 +44,7 @@ body {font-family: verdana;}
 ?>
 	</div><!-- close profcolumn -->
 	<div id="content">
-	
+	<div class="box">
 <?php
 		// här registrerar man sig
 		if(isset($_POST['regUser']))
@@ -54,8 +54,11 @@ body {font-family: verdana;}
 				// stoppar in datan i basen
 				$regUser = $_POST['regUser'];
 				$regPass = $_POST['regPass'];
-				$regInsertsql = "INSERT INTO user (userName, password, joined) 
-				VALUES ('$regUser', '$regPass', NOW() )";
+				if($_POST['admin'] == 'yes') // har man checkat i admin får man yes. annars no
+					{$admin = 1;}
+				else{$admin = 0;}
+				$regInsertsql = "INSERT INTO user (userName, password, joined, admin) 
+				VALUES ('$regUser', '$regPass', NOW(), '$admin')";
 				mysqli_query($dbConn, $regInsertsql);
 
 				// hämtar nya namnet och meddelar att allt gått fint till
@@ -79,6 +82,8 @@ body {font-family: verdana;}
 				<input type='password' name='regPass'><br>
 				Upprepa lösenord:<br>
 				<input type='password' name='reregPass'><br>
+				Vill du bli admin?<br>
+				<input type='checkbox' name='admin' value='yes'><br>
 				<input type='submit' value='Registrera dig!''>
 				</form>";
 			}
@@ -93,12 +98,14 @@ body {font-family: verdana;}
 				<input type='password' name='regPass'><br>
 				Upprepa lösenord:<br>
 				<input type='password' name='reregPass'><br>
+				Vill du bli admin?<br>
+				<input type='checkbox' name='admin' value='yes'><br>
 				<input type='submit' value='Registrera dig!''>
 			</form>";
 		}
 ?>
 
-	
+	</div> <!-- close box -->
 	</div> <!-- close content -->
 	
 </div><!-- close wrap -->

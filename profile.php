@@ -65,7 +65,17 @@ body {font-family: verdana;}
 				echo "<a href='upload.php?userID=".$userID."'>Ladda upp en bild</a><br>";
 			}
 
-			echo "<a href='create.php?userID=".$userID."'>Skapa nytt quiz</a>";
+			//skriver ut länk till att skapa quiz om admin
+			$userID = $_SESSION['userID'];
+			$checkAdmin = "SELECT admin FROM user
+			WHERE userID = $userID";
+			$res = mysqli_query($dbConn, $checkAdmin);
+			$row = mysqli_fetch_assoc($res);
+			$admin = $row['admin'];
+			if ($admin == 1)
+			{
+				echo "<a href='create.php?userID=".$userID."'>Skapa nytt quiz</a>";
+			}
 			logOutLink();//logga ut länk
 ?>
 	</div>
@@ -73,8 +83,14 @@ body {font-family: verdana;}
 		<div class="infobox">
 		<h3>Information</h3>
 <?php
+		// skriver ut om man är admin eller inte
+		
+			echo "Admin: ";
+			if($admin == 1)
+				{echo "Ja<br>";}
+			else{echo "Nej<br>";}
+
 		//skriver ut datum man registrerade sig
-		$userID = $_SESSION['userID'];
 		$joinedsql = "SELECT joined FROM user
 		WHERE userID = $userID";
 		$res = mysqli_query($dbConn, $joinedsql);
@@ -203,9 +219,12 @@ body {font-family: verdana;}
 ?>
 		</div><!-- close resultsbox -->
 	</div>
-	<div class="myquizbox">
-	<h3>Mina quiz!</h3>
 <?php
+	if ($admin == 1)
+	{
+		echo "<div class='myquizbox'>";
+		echo "<h3>Mina quiz!</h3>";
+
 		//deletar quizzet om man valt att göra det
 		if(isset($_GET['delete']))
 		{
@@ -254,12 +273,11 @@ body {font-family: verdana;}
 				}
 			}
 			else {echo "Du har inte skapat några quiz än";}
-
-			
-			
 		}
+
+	echo "</div>";// close my quizbox
+	}
 ?>
-	</div><!-- close myquizbox -->
 </div>
 </body>
 </html>
