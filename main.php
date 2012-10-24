@@ -35,19 +35,32 @@ body {font-family: verdana;}
 			{
 				$logUser = checkInput($_POST['logUser']);
 				$logPass = checkInput($_POST['logPass']);
-				$logsql = "SELECT userID, userName, password FROM user
-				WHERE userName = '$logUser'
-				AND password = '$logPass'";
-				$res = mysqli_query($dbConn, $logsql);
-				$num_rows = mysqli_num_rows($res);
-				
-			if ($num_rows == 1)
+
+				// kollar saltet
+				$saltsql = "SELECT userID, userName, password from user
+				WHERE userName = '$logUser'";//måste hämta användarens salt. vet inte lösen nu. hämta pämta!
+				$res = mysqli_query($dbConn, $saltsql);
+
+				if($row = mysqli_fetch_assoc($res))
 				{
-				$row = mysqli_fetch_assoc($res);
-				$_SESSION['userName'] = $row['userName'];
-				$_SESSION['userID'] = $row['userID'];}
-			else {echo "Inloggningen misslyckades! Försök igen.<br>";}
+					$dbPass = $row['password'];//hämta lösen
+					$salt = substr($dbPass,0,64);//hämta salt
+					$skickatPass = hash('sha256', $logPass);
+					$skickatMedSalt = $salt.$skickatPass;
+				
+
+
+					if ($skickatMedSalt == $dbPass)
+					{
+						
+						$_SESSION['userName'] = $row['userName'];
+						$_SESSION['userID'] = $row['userID'];
+					}
+					else {echo "Inloggningen misslyckades! Försök igen.<br>";}
+				}
+				else {echo "Användaren finns inte. Försök igen.<br>";}
 			}
+				
 	
 
 
@@ -89,7 +102,7 @@ body {font-family: verdana;}
 	</div><!-- close profcolumn -->
 	<div id="content">
 	
-<?php
+<?php 
 		// här hämtas alla quizen
 		$sql = "SELECT * FROM quiz
 		INNER JOIN user
@@ -103,6 +116,7 @@ body {font-family: verdana;}
 			echo "Skapat ".$row['created']." av ".$row['userName']."<br>";
 			echo "</div>";
 		}
+		
 ?>
 	
 	</div> <!-- close content -->

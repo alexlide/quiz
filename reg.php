@@ -51,12 +51,19 @@ body {font-family: verdana;}
 		{
 			if($_POST['regPass'] == $_POST['reregPass']) // kollar att båda lösenorden är samm
 			{
-				// stoppar in datan i basen
+				
 				$regUser = $_POST['regUser'];
 				$regPass = $_POST['regPass'];
-				if($_POST['admin'] == 'yes') // har man checkat i admin får man yes. annars no
-					{$admin = 1;}
-				else{$admin = 0;}
+				$admin = $_POST['admin'];
+				
+				// saltar lite
+				$slump = time()."nubben".$regUser;
+				$salt = hash('sha256', $slump);
+				$regPass = hash('sha256', $regPass);
+				$regPass = $salt.$regPass;
+				$regUser = mysqli_real_escape_string($dbConn, $regUser);
+				$regUser = htmlspecialchars($regUser);
+		
 				$regInsertsql = "INSERT INTO user (userName, password, joined, admin) 
 				VALUES ('$regUser', '$regPass', NOW(), '$admin')";
 				mysqli_query($dbConn, $regInsertsql);
@@ -83,7 +90,8 @@ body {font-family: verdana;}
 				Upprepa lösenord:<br>
 				<input type='password' name='reregPass'><br>
 				Vill du bli admin?<br>
-				<input type='checkbox' name='admin' value='yes'><br>
+				<input type='radio' name='admin' value='yes'>Ja<br>
+				<input type='radio' name='admin' value='no'>Nej<br>
 				<input type='submit' value='Registrera dig!''>
 				</form>";
 			}
@@ -99,7 +107,8 @@ body {font-family: verdana;}
 				Upprepa lösenord:<br>
 				<input type='password' name='reregPass'><br>
 				Vill du bli admin?<br>
-				<input type='checkbox' name='admin' value='yes'><br>
+				<input type='radio' name='admin' value='yes'>Ja<br>
+				<input type='radio' name='admin' value='no'>Nej<br>
 				<input type='submit' value='Registrera dig!''>
 			</form>";
 		}
