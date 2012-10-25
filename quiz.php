@@ -36,8 +36,8 @@ body {font-family: verdana;}
 <body>
 <div id="wrap">
 	<div id="header">
-		<h1>1<a href="main.php">X</a>2</h1>
-	</div><!-- close main -->
+		<h1>1<a href="index.php">X</a>2</h1>
+	</div><!-- close header -->
 	<div id="profcolumn">
 <?php
 if(isset($_SESSION['userName']))// visar bild och skriver ut username/länk om man är inloggad. annars form för inloggning.
@@ -63,7 +63,7 @@ if(isset($_SESSION['userName']))// visar bild och skriver ut username/länk om m
 		}
 		else
 		{
-			echo "<form method='post' action='main.php'>
+			echo "<form method='post' action='index.php'>
 				Användarnamn:<br>
 				<input type='text' name='logUser'><br>
 				Lösenord:<br>
@@ -184,7 +184,7 @@ if(isset($_SESSION['userID']))
 				elseif($procent > 0.4)
 					{echo "Ganska bra jobbat!<br>";}
 				else {echo "Dåligt jobbat!<br>";}
-				echo "Gå tillbaka till quizsidan<a href='main.php'>?</a><br>";
+				echo "Gå tillbaka till quizsidan<a href='header.php'>?</a><br>";
 			}
 
 		}

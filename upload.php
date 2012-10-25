@@ -28,7 +28,7 @@ body {font-family: verdana;}
 <body>
 <div id="wrap">
 	<div id="header">
-		<h1>1<a href="main.php">X</a>2</h1>
+		<h1>1<a href="index.php">X</a>2</h1>
 	</div><!-- close header  -->
 	<div id="profcolumn">
 <?php
