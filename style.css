@@ -132,6 +132,53 @@ a
 {
 	#wrap
 	{
+		width: 750px;
+	}
+	#profcolumn
+	{
+		float:none;
+		margin: auto;
+		width: 300px;
+		border: 1px black solid;
+		border-radius: 5px;
+		margin-top: 5px;
+	}
+	img
+	{
+		float:left;
+		margin-right: 5px;
+	}
+	#content
+	{
+		float: none;
+		margin: auto;
+	}
+	.myquizbox
+	{
+		float: none;
+		margin: auto;
+		margin-bottom: 5px;
+	}
+	.box
+	{
+		margin: auto;
+		margin-bottom: 5px;
+	}
+	.infobox
+	{
+		margin: auto;
+		margin-bottom: 5px;
+	}
+	.resultsbox
+	{
+		margin: auto;
+	}
+
+}
+@media screen and (max-width: 770px)
+{
+	#wrap
+	{
 		width: 600px;
 	}
 	#profcolumn
