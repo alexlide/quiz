@@ -217,7 +217,17 @@ body {font-family: verdana;}
 			$year = substr($currentStart, 4, 2);
 			$month = substr($currentStart, 2, 2);
 			$day = substr($currentStart, 0, 2);
-			$hour = substr($currentStart, 6, 2)+2;
+			$felHour = substr($currentStart, 6, 2);
+			if ($felHour == 22)
+				{$hour = 00;}
+			elseif ($felHour == 23)
+				{$hour = 01;}
+			elseif(substr($felHour, 0,1) == 0)
+				{
+					$earlyHour = substr($felHour,1,1);
+					$hour = "0".$earlyHour;
+				}
+			else{$hour = $felHour + 2;}
 			$min = substr($currentStart, 8, 2);
 			$sec = substr($currentStart, 10, 2);
 			echo "<span class='lastrow'>20".$year."-".$month."-".$day." ".$hour.":".$min.":".$sec."</span><br>";			

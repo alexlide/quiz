@@ -33,7 +33,7 @@ body
 .lastrow
 {
 	position: absolute;
-	left: 330px;
+	left: 310px;
 }
 .box
 {
@@ -130,6 +130,10 @@ a
 }
 @media screen and (max-width: 1000px)
 {
+	body 
+	{
+	font-size: 18px;
+	}
 	#wrap
 	{
 		width: 750px;
@@ -139,7 +143,7 @@ a
 		float:none;
 		margin: auto;
 		width: 300px;
-		border: 1px black solid;
+		border: 2px black solid;
 		border-radius: 5px;
 		margin-top: 5px;
 	}
@@ -158,25 +162,47 @@ a
 		float: none;
 		margin: auto;
 		margin-bottom: 5px;
+		border: 2px black solid;
+		width: 250px;
 	}
 	.box
 	{
 		margin: auto;
 		margin-bottom: 5px;
+		border: 2px black solid;
 	}
 	.infobox
 	{
 		margin: auto;
 		margin-bottom: 5px;
+		border: 2px black solid;
 	}
 	.resultsbox
 	{
 		margin: auto;
+		border: 2px black solid;
+	}
+	.middlerow
+	{
+		left: 150px;
+	}
+	.lastrow
+	{
+		left: 270px;
+	}
+	
+	.andra
+	{
+		right: 90px;
 	}
 
 }
 @media screen and (max-width: 770px)
 {
+	body 
+	{
+	font-size: 17px;
+	}
 	#wrap
 	{
 		width: 600px;
@@ -227,6 +253,10 @@ a
 	#wrap
 	{
 		width: 450px;
+	}
+	body 
+	{
+	font-size: 15px;
 	}
 	#profcolumn
 	{
