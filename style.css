@@ -95,19 +95,13 @@ h1
 	width: 160px;
 	height: auto;
 	padding: 10px;
+	overflow: auto;
 }
 #content
 {
 	float: left;
 	padding: 5px 0;
 	margin: 0;
-}
-#image
-{
-	border: 5px #333 solid;
-	padding: 0;
-	font-size: 50px;
-	color: #ccc;
 }
 h3
 {
@@ -121,4 +115,109 @@ a
 	color: red;
 	text-decoration: none;
 }
-a
+@media screen and (max-width: 1000px)
+{
+	#wrap
+	{
+		width: 600px;
+	}
+	#profcolumn
+	{
+		float:none;
+		margin: auto;
+		width: 300px;
+		border: 1px black solid;
+		border-radius: 5px;
+		margin-top: 5px;
+	}
+	img
+	{
+		float:left;
+		margin-right: 5px;
+	}
+	#content
+	{
+		float: none;
+		margin: auto;
+	}
+	.myquizbox
+	{
+		float: none;
+		margin: auto;
+		margin-bottom: 5px;
+	}
+	.box
+	{
+		margin: auto;
+		margin-bottom: 5px;
+	}
+	.infobox
+	{
+		margin: auto;
+		margin-bottom: 5px;
+	}
+	.resultsbox
+	{
+		margin: auto;
+	}
+
+}
+@media screen and (max-width: 620px)
+{
+	#wrap
+	{
+		width: 450px;
+	}
+	#profcolumn
+	{
+		float:none;
+		margin: auto;
+		width: 300px;
+		border: 1px black solid;
+		border-radius: 5px;
+		margin-top: 5px;
+	}
+	img
+	{
+		float:left;
+		margin-right: 5px;
+	}
+	#content
+	{
+		float: none;
+		margin: auto;
+	}
+	.myquizbox
+	{
+		float: none;
+		margin: auto;
+		margin-bottom: 5px;
+	}
+	.box
+	{
+		margin: auto;
+		margin-bottom: 5px;
+		width: 400px;
+
+	}
+	.infobox
+	{
+		margin: auto;
+		margin-bottom: 5px;
+		width: 400px;
+	}
+	.resultsbox
+	{
+		margin: auto;
+		width: 400px;
+	}
+	.middlerow
+	{
+		left: 120px;
+	}
+	.lastrow
+	{
+		left: 215px;
+	}
+
+}
