@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 24, 2012 at 08:04 PM
+-- Generation Time: Oct 25, 2012 at 10:22 AM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   `userID` int(11) NOT NULL,
   PRIMARY KEY (`imageID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `image`
@@ -42,7 +42,8 @@ CREATE TABLE IF NOT EXISTS `image` (
 INSERT INTO `image` (`imageID`, `imageSource`, `thumbSource`, `userID`) VALUES
 (18, 'images/Desert.jpg', 'images/thumb_Desert.jpg', 9),
 (19, 'images/Koala.jpg', 'images/thumb_Koala.jpg', 1),
-(20, 'images/Penguins.jpg', 'images/thumb_Penguins.jpg', 15);
+(20, 'images/Penguins.jpg', 'images/thumb_Penguins.jpg', 15),
+(21, 'images/Tulips.jpg', 'images/thumb_Tulips.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -54,13 +55,13 @@ CREATE TABLE IF NOT EXISTS `question` (
   `questionID` int(11) NOT NULL AUTO_INCREMENT,
   `quizID` int(11) NOT NULL,
   `content` varchar(100) COLLATE utf8_swedish_ci NOT NULL,
-  `alt1` varchar(30) COLLATE utf8_swedish_ci NOT NULL,
-  `altX` varchar(30) COLLATE utf8_swedish_ci NOT NULL,
-  `alt2` varchar(30) COLLATE utf8_swedish_ci NOT NULL,
+  `alt1` varchar(50) COLLATE utf8_swedish_ci NOT NULL,
+  `altX` varchar(50) COLLATE utf8_swedish_ci NOT NULL,
+  `alt2` varchar(50) COLLATE utf8_swedish_ci NOT NULL,
   `correct` varchar(4) COLLATE utf8_swedish_ci NOT NULL,
   PRIMARY KEY (`questionID`),
   KEY `quizID` (`quizID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `question`
@@ -83,7 +84,10 @@ INSERT INTO `question` (`questionID`, `quizID`, `content`, `alt1`, `altX`, `alt2
 (16, 9, 'mapa', 'gapa', 'rapa', 'napa', 'alt2'),
 (17, 9, 'vapa', 'snapa', 'knapa', 'drapa', 'altX'),
 (18, 10, 'hur är det att vara på toppen', 'toppen', 'koppen', 'sjoppen', 'alt1'),
-(20, 12, 'missar man quiz miss i diss?', 'missiliss', 'inismiais', 'soidfjuu', 'alt2');
+(20, 12, 'missar man quiz miss i diss?', 'missiliss', 'inismiais', 'soidfjuu', 'alt2'),
+(21, 13, 'hur långt kan en potatis rulla?', 'ganska långt', 'potatis rullar inte, de hoppar', '3m', 'alt2'),
+(22, 13, 'hur mycket väger en potatis?', 'som en halv melon', 'som en hel fjäder', 'precis så mycket som den ska väga', 'alt1'),
+(23, 13, 'varför kan man inte se en potatis när det är mörkt?', 'de är så skygga', 'du har dålig syn', 'potatisar är egentligen kameleonter', 'altX');
 
 -- --------------------------------------------------------
 
@@ -99,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `quiz` (
   `description` varchar(100) COLLATE utf8_swedish_ci NOT NULL,
   PRIMARY KEY (`quizID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `quiz`
@@ -111,7 +115,8 @@ INSERT INTO `quiz` (`quizID`, `quizName`, `created`, `userID`, `description`) VA
 (8, 'pajquiz', '2012-10-22 19:32:17', 1, 'handlar om pajer och gott'),
 (9, 'apquiz', '2012-10-22 19:38:52', 2, 'handlar om apor'),
 (10, 'toppquiz', '2012-10-22 22:13:15', 3, 'handlar om hur det är att vara på toppen'),
-(12, 'missquiz', '2012-10-23 19:18:29', 3, 'quiz där man får rätt om man svarar fel.');
+(12, 'missquiz', '2012-10-23 19:18:29', 3, 'quiz där man får rätt om man svarar fel.'),
+(13, 'potatisquiz', '2012-10-24 23:04:12', 2, 'vad vore livet utan potatis?');
 
 -- --------------------------------------------------------
 
@@ -127,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `results` (
   `start` bigint(12) NOT NULL,
   PRIMARY KEY (`resultID`),
   KEY `userID` (`userID`,`questionID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=65 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=97 ;
 
 --
 -- Dumping data for table `results`
@@ -157,7 +162,25 @@ INSERT INTO `results` (`resultID`, `userID`, `questionID`, `answer`, `start`) VA
 (61, 10, 18, 'alt1', 231012133323),
 (62, 10, 13, 'altX', 231012171234),
 (63, 10, 14, 'altX', 231012171234),
-(64, 3, 20, 'alt1', 231012172937);
+(64, 3, 20, 'alt1', 231012172937),
+(65, 2, 1, 'alt1', 241012202339),
+(66, 2, 2, 'altX', 241012202339),
+(67, 2, 3, 'alt2', 241012202339),
+(68, 2, 4, 'altX', 241012202339),
+(69, 2, 5, 'altX', 241012202339),
+(70, 2, 15, 'altX', 241012203159),
+(71, 2, 16, 'alt2', 241012203159),
+(72, 2, 17, 'alt2', 241012203159),
+(73, 2, 18, 'alt2', 241012203303),
+(76, 2, 1, 'altX', 241012203818),
+(77, 2, 2, 'alt1', 241012203818),
+(78, 2, 3, 'alt1', 241012203818),
+(79, 2, 4, 'alt2', 241012203818),
+(80, 2, 5, 'alt2', 241012203818),
+(93, 3, 18, 'alt1', 241012211033),
+(94, 15, 21, 'alt2', 251012100837),
+(95, 15, 22, 'alt1', 251012100837),
+(96, 15, 23, 'altX', 251012100837);
 
 -- --------------------------------------------------------
 
