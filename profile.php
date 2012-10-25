@@ -127,7 +127,13 @@ body {font-family: verdana;}
 			$row = mysqli_fetch_assoc($res);
 				$numCorrect = $row['numCorrect'];
 				$procent = round(($numCorrect / $numQuestion) * 100);// räknar ut procent rätt man fått och skriver ut
+				if ($procent > 70)
+					{echo "<span id='greenprocent'>";}
+				elseif ($procent > 40)
+					{echo "<span id='orangeprocent'>";}
+				else {echo "<span id='redprocent'>"}
 				echo "Genomsnitt rätta svar: ".$procent."%<br>";
+				echo "</div>";// close procent
 		}
 
 
