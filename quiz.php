@@ -184,7 +184,7 @@ if(isset($_SESSION['userID']))
 				elseif($procent > 0.4)
 					{echo "Ganska bra jobbat!<br>";}
 				else {echo "Dåligt jobbat!<br>";}
-				echo "Gå tillbaka till quizsidan<a href='header.php'>?</a><br>";
+				echo "Gå tillbaka till quizsidan<a href='index.php'>?</a><br>";
 			}
 
 		}
