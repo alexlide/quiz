@@ -218,7 +218,7 @@ body {font-family: verdana;}
 			$month = substr($currentStart, 2, 2);
 			$day = substr($currentStart, 0, 2);
 			$felHour = substr($currentStart, 6, 2);
-			if ($felHour == 22)
+			if ($felHour == 22)// då date får tiden som är två timmar innan svensk tid. lägger till två timmar. blir fel om man inte är i sverige.
 				{$hour = 00;}
 			elseif ($felHour == 23)
 				{$hour = 01;}
