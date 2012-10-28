@@ -88,8 +88,12 @@ body {font-family: verdana;}
 			<input type='text' name='altX'><br>
 			Alternativ 2: <br>
 			<input type='text' name='alt2'><br>
-			Rätt alternativ: (skriv alt1, altX eller alt2)<br>
-			<input type='text' name='correct'><br>
+			Rätt alternativ: <br>
+			<select name='correct'>
+				<option value='alt1'>alt1</option>
+				<option value='altX'>altX</option>
+				<option value='alt2'>alt2</option>
+			</select><br>
 			<input type='submit' value='Spara frågan'>";
 			}
 			else // finns det inga frågor kvar får man reda på sitt resultat

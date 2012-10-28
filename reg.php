@@ -49,9 +49,14 @@ body {font-family: verdana;}
 		// här registrerar man sig
 		if(isset($_POST['regUser']))
 		{
+		// kollar att användarnamnet inte finns
+		$checkUsersql = "SELECT userName FROM user";
+		$res = mysqli_query($dbConn, $checkUsersql);		
+		$row = mysqli_fetch_assoc($res);
+		if ($_POST['regUser'] != $row['userName'])
+		{
 			if($_POST['regPass'] == $_POST['reregPass']) // kollar att båda lösenorden är samm
 			{
-				
 				$regUser = $_POST['regUser'];
 				$regPass = $_POST['regPass'];
 				$admin = $_POST['admin'];
@@ -90,11 +95,28 @@ body {font-family: verdana;}
 				Upprepa lösenord:<br>
 				<input type='password' name='reregPass'><br>
 				Vill du bli admin?<br>
-				<input type='radio' name='admin' value='yes'>Ja<br>
-				<input type='radio' name='admin' value='no'>Nej<br>
+				<input type='radio' name='admin' value='1'>Ja<br>
+				<input type='radio' name='admin' value='0'>Nej<br>
 				<input type='submit' value='Registrera dig!''>
 				</form>";
 			}
+		}
+		else
+		{
+			echo "Användarnamnet är redan taget. Välj ett annat vetja!";
+			echo "<form method='post' action='reg.php'>
+				Användarnamn:<br>
+				<input type='text' name='regUser'><br>
+				Lösenord:<br>
+				<input type='password' name='regPass'><br>
+				Upprepa lösenord:<br>
+				<input type='password' name='reregPass'><br>
+				Vill du bli admin?<br>
+				<input type='radio' name='admin' value='1'>Ja<br>
+				<input type='radio' name='admin' value='0'>Nej<br>
+				<input type='submit' value='Registrera dig!''>
+				</form>";
+		}
 		}
 		else // regformen kommer upp om man inte skrivit nåt i den
 		{
@@ -107,8 +129,8 @@ body {font-family: verdana;}
 				Upprepa lösenord:<br>
 				<input type='password' name='reregPass'><br>
 				Vill du bli admin?<br>
-				<input type='radio' name='admin' value='yes'>Ja<br>
-				<input type='radio' name='admin' value='no'>Nej<br>
+				<input type='radio' name='admin' value='1'>Ja<br>
+				<input type='radio' name='admin' value='0'>Nej<br>
 				<input type='submit' value='Registrera dig!''>
 			</form>";
 		}
